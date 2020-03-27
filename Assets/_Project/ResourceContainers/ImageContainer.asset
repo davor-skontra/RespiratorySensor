@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08837e05eded4d63a82f9ea1d3a49e6c, type: 3}
   m_Name: ImageContainer
   m_EditorClassIdentifier: 
-  instructionImage: {fileID: 0}
+  instructionImage: {fileID: 21300000, guid: ca55035d3298fad42aa610371b6ccc59, type: 3}
