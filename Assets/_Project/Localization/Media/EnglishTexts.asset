@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ae1daba972fc64a979eebb96e22fc0, type: 3}
   m_Name: EnglishTexts
   m_EditorClassIdentifier: 
-  language: 0
+  language: 10
+  pressButtonToStart: Press the button bellow to start measuring your resporatory
+    rate.
+  whenReadyPlaceAndWait: When ready, press the button below. Then place your phone
+    on chest below sternum; like shown in this picture.

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d711fe888a1f447ea94102a340ac7f1e, type: 3}
-  m_Name: LocalizationContainer
+  m_Script: {fileID: 11500000, guid: 08837e05eded4d63a82f9ea1d3a49e6c, type: 3}
+  m_Name: ImageContainer
   m_EditorClassIdentifier: 
-  textLocalizations:
-  - {fileID: 11400000, guid: 9ed72f30f09f42340b621e10916fad66, type: 2}
-  audioLocalization: []
+  instructionImage: {fileID: 0}

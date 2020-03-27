@@ -1,4 +1,5 @@
 using Localization;
+using ResourceContainers;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,7 @@ namespace Di
     public class ProjectInstaller : MonoInstaller
     {
         [SerializeField] private LocalizationContainer localizationContainer;
+        [SerializeField] private ImageContainer imageContainer;
 
         public override void InstallBindings()
         {
@@ -20,6 +22,10 @@ namespace Di
                 .BindInstance(
                     localizationContainer.GetLocalizedAudiosFor(Application.systemLanguage)
                 )
+                .AsSingle();
+
+            Container
+                .BindInstance(imageContainer)
                 .AsSingle();
         }
     }
