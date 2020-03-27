@@ -1,7 +1,6 @@
 using System;
 using Localization;
 using ResourceContainers;
-using UnityEngine;
 
 namespace Actors.ProgressiveText
 {
@@ -9,8 +8,9 @@ namespace Actors.ProgressiveText
     {
         private int _currentScreen = 0;
 
-        public event Action<Screen> ChangeScreenEvent;
-        
+        public event Action<ProgressiveScreen> ChangeScreenEvent;
+        public event Action DoneWithProgressiveScreensEvent;
+
         public ProgressiveTextModel(
             LocalizedTexts localizedTexts,
             LocalizedAudios localizedAudios,
@@ -27,12 +27,22 @@ namespace Actors.ProgressiveText
                 )
             };
         }
-        
+
         private ProgressiveScreen[] Screens { get; }
 
         public void RequestNextScreen()
         {
-            
+            if (_currentScreen < Screens.Length)
+            {
+                ChangeScreenEvent?.Invoke(
+                    Screens[_currentScreen++]
+                );
+            }
+            else
+            {
+                DoneWithProgressiveScreensEvent?.Invoke();
+            }
+
         }
     }
 }
