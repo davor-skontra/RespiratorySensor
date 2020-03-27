@@ -1,18 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Languages : MonoBehaviour
+﻿namespace Localization
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum Language
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        English, Finnish
     }
 }
