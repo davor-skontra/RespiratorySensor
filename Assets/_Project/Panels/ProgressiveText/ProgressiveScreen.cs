@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Actors.ProgressiveText
+namespace Panels.ProgressiveText
 {
     public struct ProgressiveScreen
     {

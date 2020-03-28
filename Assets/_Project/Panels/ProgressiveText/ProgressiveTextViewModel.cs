@@ -20,6 +20,7 @@ namespace ViewModels
         public event Action<Color> TextAndImageColorEvent;
         public event Action<Sprite> ImageEvent;
         public event Action<bool> ImageVisibilityEvent;
+        public event Action HideProgressiveTextPanelEvent; 
 
         public ProgressiveTextViewModel(ProgressiveTextModel model, ProgressiveScreenSettings settings)
         {
@@ -27,6 +28,7 @@ namespace ViewModels
             _settings = settings;
 
             _model.ChangeScreenEvent += OnNextScreen;
+            _model.DoneWithProgressiveScreensEvent += HideProgressiveTextPanelEvent;
         }
 
         public void RequestNextScreen() => _model.RequestNextScreen();
@@ -89,6 +91,7 @@ namespace ViewModels
         public void Dispose()
         {
             _model.ChangeScreenEvent -= OnNextScreen;
+            _model.DoneWithProgressiveScreensEvent -= HideProgressiveTextPanelEvent;
         }
     }
 }
