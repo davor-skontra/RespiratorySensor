@@ -1,8 +1,8 @@
 using System;
 using Localization;
-using ResourceContainers;
+using Panels.ProgressiveText.Image;
 
-namespace Actors.ProgressiveText
+namespace Panels.ProgressiveText
 {
     public class ProgressiveTextModel
     {

@@ -1,9 +1,8 @@
 using System;
-using Actors.ProgressiveText;
 using DG.Tweening;
 using UnityEngine;
 
-namespace ViewModels
+namespace Panels.ProgressiveText
 {
     public class ProgressiveTextViewModel : IDisposable
     {

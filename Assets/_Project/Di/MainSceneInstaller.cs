@@ -1,7 +1,5 @@
-using Actors.ProgressiveText;
-using ResourceContainers;
+using Panels.ProgressiveText;
 using UnityEngine;
-using ViewModels;
 using Zenject;
 
 namespace Di

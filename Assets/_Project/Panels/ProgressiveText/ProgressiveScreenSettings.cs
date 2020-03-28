@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Actors.ProgressiveText
+namespace Panels.ProgressiveText
 {
     [CreateAssetMenu(fileName = nameof(ProgressiveScreenSettings), menuName = "Progressive Screen Settings")]
     public class ProgressiveScreenSettings : ScriptableObject

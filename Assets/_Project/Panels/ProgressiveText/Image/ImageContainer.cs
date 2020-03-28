@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ResourceContainers
+namespace Panels.ProgressiveText.Image
 {
     [CreateAssetMenu(fileName = nameof(ImageContainer), menuName = "Image Container")]
     public class ImageContainer: ScriptableObject

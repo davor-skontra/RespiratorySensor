@@ -1,5 +1,5 @@
 using Localization;
-using ResourceContainers;
+using Panels.ProgressiveText.Image;
 using UnityEngine;
 using Zenject;
 

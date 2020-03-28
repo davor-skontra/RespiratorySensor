@@ -1,16 +1,14 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using ViewModels;
 using Zenject;
 
-namespace Actors.ProgressiveText
+namespace Panels.ProgressiveText
 {
     public class ProgressiveTextView: MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI text;
-        [SerializeField] private Image image;
+        [SerializeField] private UnityEngine.UI.Image image;
         [SerializeField] private Button button;
 
         [Inject] private ProgressiveTextViewModel _viewModel;
@@ -54,6 +52,6 @@ namespace Actors.ProgressiveText
         private void SetImage(Sprite s) => image.sprite = s;
 
         private void SetImageVisibility(bool v) => image.enabled = v;
-
+        
     }
 }
