@@ -25,7 +25,8 @@ namespace Di
                 .AsSingle();
 
             Container
-                .BindInstance(imageContainer)
+                .BindInterfacesAndSelfTo<ImageContainer>()
+                .FromInstance(imageContainer)
                 .AsSingle();
         }
     }

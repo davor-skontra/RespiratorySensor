@@ -75,3 +75,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationContainer: {fileID: 11400000, guid: 0a4acc85ebe0e464db49bfe7daef7207,
     type: 2}
+  imageContainer: {fileID: 11400000, guid: a29c14d422432d342a5e2febc001f346, type: 2}

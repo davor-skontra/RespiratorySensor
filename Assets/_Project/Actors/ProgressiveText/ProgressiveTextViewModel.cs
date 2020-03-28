@@ -12,12 +12,12 @@ namespace ViewModels
 
         private bool _initialized;
 
-        private Tweener _animation;
-        private Color _textColor;
+        private Sequence _animation;
+        private Color _textAndImageAndImageColor = Color.white;
         private Color _initialTextColor;
 
         public event Action<string> TextEvent;
-        public event Action<Color> TextColorEvent;
+        public event Action<Color> TextAndImageColorEvent;
         public event Action<Sprite> ImageEvent;
         public event Action<bool> ImageVisibilityEvent;
 
@@ -29,13 +29,16 @@ namespace ViewModels
             _model.ChangeScreenEvent += OnNextScreen;
         }
 
-        private Color TextColor
+        public void RequestNextScreen() => _model.RequestNextScreen();
+
+        private Color TextAndImageColor
         {
-            get => _textColor;
+            get => _textAndImageAndImageColor;
             set
             {
-                _textColor = value;
-                TextColorEvent?.Invoke(_textColor);
+                _textAndImageAndImageColor = value;
+                Debug.Log(value);
+                TextAndImageColorEvent?.Invoke(_textAndImageAndImageColor);
             }
         }
 
@@ -45,24 +48,30 @@ namespace ViewModels
             {
                 _animation?.Kill();
 
-                DOTween
-                    .To(
-                        () => TextColor,
-                        x => TextColor = x,
-                        Color.clear,
-                        _settings.ChangeSpeed
-                    )
-                    .SetEase(_settings.Ease)
-                    .OnComplete(() => SetTextAndImage(screen))
-                    .SetLoops(1, LoopType.Yoyo);
+                _animation = DOTween.Sequence()
+                    .Append(AnimateColorTo(Color.clear))
+                    .AppendCallback(() => SetTextAndImageInstant(screen))
+                    .Append(AnimateColorTo(_initialTextColor))
+                    .Play();
             }
             else
             {
-                _initialTextColor = TextColor;
+                SetTextAndImageInstant(screen);
+                _initialTextColor = TextAndImageColor;
+                _initialized = true;
             }
+
+            Tweener AnimateColorTo(Color color) =>
+                DOTween.To(
+                        () => TextAndImageColor,
+                        x => TextAndImageColor = x,
+                        color,
+                        _settings.ChangeSpeed
+                    )
+                    .SetEase(_settings.Ease);
         }
 
-        private void SetTextAndImage(ProgressiveScreen screen)
+        private void SetTextAndImageInstant(ProgressiveScreen screen)
         {
             TextEvent?.Invoke(screen.Text);
 

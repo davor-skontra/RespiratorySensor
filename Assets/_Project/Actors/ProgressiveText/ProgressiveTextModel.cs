@@ -23,7 +23,8 @@ namespace Actors.ProgressiveText
                     localizedTexts.PressButtonToStart
                 ),
                 ProgressiveScreen.From(
-                    localizedTexts.WhenReadyPlaceAndWait
+                    localizedTexts.WhenReadyPlaceAndWait,
+                    image: images.Instruction
                 )
             };
         }

@@ -8,12 +8,12 @@ namespace Localization
     public class LocalizationContainer: ScriptableObject
     {
         [SerializeField] private LocalizedTexts[] textLocalizations;
-        [SerializeField] private LocalizedAudios[] audioLocalization;
+        [SerializeField] private LocalizedAudios[] audioLocalizations;
 
         public LocalizedTexts GetLocalizedTextsFor(SystemLanguage language) => textLocalizations
-            .First(x => x.Language == language);
-        
-        public LocalizedAudios GetLocalizedAudiosFor(SystemLanguage language) => audioLocalization
-            .First(x => x.Language == language);
+            .FirstOrDefault(x => x.Language == language) ?? textLocalizations.First();
+
+        public LocalizedAudios GetLocalizedAudiosFor(SystemLanguage language) => audioLocalizations
+            ?.FirstOrDefault(x => x.Language == language);
     }
 }
