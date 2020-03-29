@@ -12,6 +12,12 @@ namespace Di
 
         public override void InstallBindings()
         {
+            BindLocalizations();
+            BindOtherResourceContainers();
+        }
+
+        private void BindLocalizations()
+        {
             Container
                 .BindInstance(
                     localizationContainer.GetLocalizedTextsFor(Application.systemLanguage)
@@ -23,7 +29,10 @@ namespace Di
                     localizationContainer.GetLocalizedAudiosFor(Application.systemLanguage)
                 )
                 .AsSingle();
+        }
 
+        private void BindOtherResourceContainers()
+        {
             Container
                 .BindInterfacesAndSelfTo<ImageContainer>()
                 .FromInstance(imageContainer)

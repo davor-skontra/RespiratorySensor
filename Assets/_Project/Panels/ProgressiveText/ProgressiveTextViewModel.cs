@@ -1,13 +1,15 @@
 using System;
 using DG.Tweening;
+using Panels.PanelManagement;
 using UnityEngine;
 
 namespace Panels.ProgressiveText
 {
-    public class ProgressiveTextViewModel : IDisposable
+    public class ProgressiveTextViewModel : PanelViewModel, IDisposable
     {
         private readonly ProgressiveTextModel _model;
         private readonly ProgressiveScreenSettings _settings;
+        private readonly PanelVisibilityManager _visibilityManager;
 
         private bool _initialized;
 
@@ -19,18 +21,27 @@ namespace Panels.ProgressiveText
         public event Action<Color> TextAndImageColorEvent;
         public event Action<Sprite> ImageEvent;
         public event Action<bool> ImageVisibilityEvent;
-        public event Action HideProgressiveTextPanelEvent; 
 
-        public ProgressiveTextViewModel(ProgressiveTextModel model, ProgressiveScreenSettings settings)
+        public ProgressiveTextViewModel(ProgressiveTextModel model, ProgressiveScreenSettings settings, PanelVisibilityManager visibilityManager)
         {
             _model = model;
             _settings = settings;
+            _visibilityManager = visibilityManager;
 
             _model.ChangeScreenEvent += OnNextScreen;
-            _model.DoneWithProgressiveScreensEvent += HideProgressiveTextPanelEvent;
+            _model.DoneWithProgressiveScreensEvent += ShowMeasurementPanel;
+            
+            _visibilityManager.RegisterPanel(this);
+
         }
 
+        public override PanelKind PanelKind => PanelKind.ProgressiveText;
         public void RequestNextScreen() => _model.RequestNextScreen();
+
+        private void ShowMeasurementPanel()
+        {
+            SetVisiblePanel(PanelKind.Measurement);
+        }
 
         private Color TextAndImageColor
         {
@@ -90,7 +101,7 @@ namespace Panels.ProgressiveText
         public void Dispose()
         {
             _model.ChangeScreenEvent -= OnNextScreen;
-            _model.DoneWithProgressiveScreensEvent -= HideProgressiveTextPanelEvent;
+            _model.DoneWithProgressiveScreensEvent -= ShowMeasurementPanel;
         }
     }
 }

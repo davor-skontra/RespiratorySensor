@@ -21,6 +21,7 @@ namespace Panels.ProgressiveText
             _viewModel.TextAndImageColorEvent += SetTextAndImageColor;
             _viewModel.ImageEvent += SetImage;
             _viewModel.ImageVisibilityEvent += SetImageVisibility;
+            _viewModel.ShouldBeVisibleEvent += SetPanelVisibility;
 
             image.material.color = _defaultMaterialColor;
 
@@ -35,6 +36,8 @@ namespace Panels.ProgressiveText
             _viewModel.TextAndImageColorEvent -= SetTextAndImageColor;
             _viewModel.ImageEvent -= SetImage;
             _viewModel.ImageVisibilityEvent -= SetImageVisibility;
+            _viewModel.ShouldBeVisibleEvent -= SetPanelVisibility;
+
             
             image.material.color = _defaultMaterialColor;
             
@@ -52,6 +55,8 @@ namespace Panels.ProgressiveText
         private void SetImage(Sprite s) => image.sprite = s;
 
         private void SetImageVisibility(bool v) => image.enabled = v;
-        
+
+        private void SetPanelVisibility(bool v) => gameObject.SetActive(v);
+
     }
 }

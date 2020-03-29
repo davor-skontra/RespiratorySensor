@@ -1,3 +1,4 @@
+using Panels.PanelManagement;
 using Panels.ProgressiveText;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,19 @@ namespace Di
         [SerializeField] private ProgressiveScreenSettings settings;
         
         public override void InstallBindings()
+        {
+            BindVisibilityManager();
+            BindProgressiveText();
+        }
+
+        private void BindVisibilityManager()
+        {
+            Container
+                .BindInterfacesAndSelfTo<PanelVisibilityManager>()
+                .AsSingle();
+        }
+
+        private void BindProgressiveText()
         {
             Container
                 .BindInterfacesAndSelfTo<ProgressiveTextModel>()
