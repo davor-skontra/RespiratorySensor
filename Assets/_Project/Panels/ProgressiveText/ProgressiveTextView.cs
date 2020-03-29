@@ -38,7 +38,6 @@ namespace Panels.ProgressiveText
             _viewModel.ImageVisibilityEvent -= SetImageVisibility;
             _viewModel.ShouldBeVisibleEvent -= SetPanelVisibility;
 
-            
             image.material.color = _defaultMaterialColor;
             
             button.onClick.RemoveListener(_viewModel.RequestNextScreen);

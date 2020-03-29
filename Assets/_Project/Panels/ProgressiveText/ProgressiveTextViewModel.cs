@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using Panels.PanelManagement;
 using UnityEngine;
 
 namespace Panels.ProgressiveText

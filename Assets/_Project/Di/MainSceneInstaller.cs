@@ -1,4 +1,4 @@
-using Panels.PanelManagement;
+using Panels;
 using Panels.ProgressiveText;
 using UnityEngine;
 using Zenject;
