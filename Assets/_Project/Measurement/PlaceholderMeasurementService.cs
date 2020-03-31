@@ -17,7 +17,7 @@ namespace Measurement
 
         public void RecordMeasurement(float x, float y, float z, long timestampMillis)
         {
-            Debug.Log($"Your mom is a timestamp {timestampMillis}");
+            Debug.Log($"x:{x}, y:{y}, z{z}\nYour mom is a timestamp {timestampMillis}");
         }
 
         public float Progress => 3f;

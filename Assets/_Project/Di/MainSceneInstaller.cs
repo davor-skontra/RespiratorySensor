@@ -56,6 +56,10 @@ namespace Di
                 .BindInterfacesAndSelfTo<MeasurementPanelSettings>()
                 .FromInstance(measurementSettings)
                 .AsSingle();
+
+            Container
+                .BindInterfacesAndSelfTo<GyroService>()
+                .AsSingle();
         }
     }
 }
