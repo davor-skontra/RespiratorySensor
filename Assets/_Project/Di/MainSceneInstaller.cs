@@ -1,4 +1,6 @@
+using Measurement;
 using Panels;
+using Panels.MeasurementPanel;
 using Panels.ProgressiveText;
 using UnityEngine;
 using Zenject;
@@ -7,10 +9,12 @@ namespace Di
 {
     public class MainSceneInstaller : MonoInstaller
     {
-        [SerializeField] private ProgressiveScreenSettings settings;
+        [SerializeField] private ProgressiveScreenSettings progressiveSettings;
+        [SerializeField] private MeasurementPanelSettings measurementSettings;
         
         public override void InstallBindings()
         {
+            BindMeasurementPanel();
             BindVisibilityManager();
             BindProgressiveText();
         }
@@ -34,7 +38,23 @@ namespace Di
 
             Container
                 .BindInterfacesAndSelfTo<ProgressiveScreenSettings>()
-                .FromInstance(settings)
+                .FromInstance(progressiveSettings)
+                .AsSingle();
+        }
+
+        private void BindMeasurementPanel()
+        {
+            Container
+                .BindInterfacesAndSelfTo<PlaceholderMeasurementService>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesAndSelfTo<MeasurementPanelModel>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesAndSelfTo<MeasurementPanelSettings>()
+                .FromInstance(measurementSettings)
                 .AsSingle();
         }
     }
