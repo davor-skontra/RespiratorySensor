@@ -1,6 +1,6 @@
 namespace Panels.MeasurementPanel
 {
-    public class MeasurementPanelSettings
+    public class MeasurementPanelViewModel
     {
         
     }

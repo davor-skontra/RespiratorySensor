@@ -2,13 +2,30 @@ using UnityEngine;
 
 namespace Measurement
 {
-    public interface IGyroService
+    public interface IGravityDirectionProvider
     {
-        Vector3 Gravity { get; }
+        Vector3 Down { get; }
     }
-    
-    public class GyroService: IGyroService
+
+    public class GravityDirectionProvider : IGravityDirectionProvider
     {
-        public Vector3 Gravity => Input.gyro.gravity;
+        private readonly bool _useGyro;
+
+        public GravityDirectionProvider()
+        {
+            _useGyro = SystemInfo.supportsGyroscope;
+
+            if (_useGyro)
+            {
+                Input.gyro.enabled = true;
+            }
+        }
+
+        // ReSharper disable once MemberCanBePrivate.Global
+        public Vector3 Down => _useGyro
+            ? Input.gyro.gravity
+            : Input.acceleration;
+
+        public Vector2 Up => -Down;
     }
 }

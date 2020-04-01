@@ -10,7 +10,6 @@ namespace Di
     public class MainSceneInstaller : MonoInstaller
     {
         [SerializeField] private ProgressiveScreenSettings progressiveSettings;
-        [SerializeField] private MeasurementPanelSettings measurementSettings;
         
         public override void InstallBindings()
         {
@@ -53,12 +52,7 @@ namespace Di
                 .AsSingle();
 
             Container
-                .BindInterfacesAndSelfTo<MeasurementPanelSettings>()
-                .FromInstance(measurementSettings)
-                .AsSingle();
-
-            Container
-                .BindInterfacesAndSelfTo<GyroService>()
+                .BindInterfacesAndSelfTo<GravityDirectionProvider>()
                 .AsSingle();
         }
     }

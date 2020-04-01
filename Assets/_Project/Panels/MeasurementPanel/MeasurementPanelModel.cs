@@ -11,10 +11,13 @@ namespace Panels.MeasurementPanel
 {
     public class MeasurementPanelModel : ITickable, IDisposable
     {
+        private const float FrequencyHz = 30f;
+        private const int MillisInSecond = 1000;
+        
         private readonly LocalizedTexts _texts;
         private readonly LocalizedAudios _audios;
         private readonly IMeasurementService _measurementService;
-        private readonly IGyroService _gyroService;
+        private readonly IGravityDirectionProvider _gravityDirectionProvider;
 
         private readonly OnceEvery _measureOnceEvery;
         private readonly Stopwatch _stopwatch= new Stopwatch();
@@ -25,13 +28,13 @@ namespace Panels.MeasurementPanel
             LocalizedTexts texts,
             LocalizedAudios audios,
             IMeasurementService measurementService,
-            IGyroService gyroService
+            IGravityDirectionProvider gravityDirectionProvider
         )
         {
             _texts = texts;
             _audios = audios;
             _measurementService = measurementService;
-            _gyroService = gyroService;
+            _gravityDirectionProvider = gravityDirectionProvider;
 
             _measurementService.ReadyEvent += ReadyEvent;
 
@@ -39,11 +42,11 @@ namespace Panels.MeasurementPanel
             
             _measureOnceEvery = new UpdateContainerBuilder(Measure)
                 .RunFirstInstant()
-                .Every(TimeSpan.FromMilliseconds(100));
+                .Every(TimeSpan.FromMilliseconds(MillisInSecond / FrequencyHz));
             
         }
 
-        private Vector3 Gravity => _gyroService.Gravity;
+        private Vector3 Gravity => _gravityDirectionProvider.Down;
 
         private void Measure()
         {
