@@ -1,4 +1,4 @@
 namespace Panels
 {
-    public enum PanelKind { ProgressiveText, Measurement }
+    public enum PanelKind { ProgressiveText, Measurement, Score }
 }

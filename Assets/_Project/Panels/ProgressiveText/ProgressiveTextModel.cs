@@ -8,7 +8,7 @@ namespace Panels.ProgressiveText
     {
         private int _currentScreen = 0;
 
-        public event Action<ProgressiveScreen> ChangeScreenEvent;
+        public event Action<InformationContainer> ChangeScreenEvent;
         public event Action DoneWithProgressiveScreensEvent;
 
         public ProgressiveTextModel(
@@ -19,17 +19,17 @@ namespace Panels.ProgressiveText
         {
             Screens = new[]
             {
-                ProgressiveScreen.From(
+                InformationContainer.From(
                     localizedTexts.PressButtonToStart
                 ),
-                ProgressiveScreen.From(
+                InformationContainer.From(
                     localizedTexts.WhenReadyPlaceAndWait,
                     image: images.Instruction
                 )
             };
         }
 
-        private ProgressiveScreen[] Screens { get; }
+        private InformationContainer[] Screens { get; }
 
         public void RequestNextScreen()
         {
@@ -43,7 +43,6 @@ namespace Panels.ProgressiveText
             {
                 DoneWithProgressiveScreensEvent?.Invoke();
             }
-
         }
     }
 }

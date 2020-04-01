@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Panels.ProgressiveText
 {
-    public struct ProgressiveScreen
+    public struct InformationContainer
     {
-        public static ProgressiveScreen From(string text, AudioClip audio = null, Sprite image = null)
+        public static InformationContainer From(string text, AudioClip audio = null, Sprite image = null)
         {
-            return new ProgressiveScreen(text, audio, image);
+            return new InformationContainer(text, audio, image);
         }
 
-        private ProgressiveScreen(string text, AudioClip audio, Sprite image)
+        private InformationContainer(string text, AudioClip audio, Sprite image)
         {
             Text = text;
             Audio = audio;

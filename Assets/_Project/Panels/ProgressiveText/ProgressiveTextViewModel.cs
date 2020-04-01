@@ -53,7 +53,7 @@ namespace Panels.ProgressiveText
             }
         }
 
-        private void OnNextScreen(ProgressiveScreen screen)
+        private void OnNextScreen(InformationContainer screen)
         {
             if (_initialized)
             {
@@ -82,7 +82,7 @@ namespace Panels.ProgressiveText
                     .SetEase(_settings.Ease);
         }
 
-        private void SetTextAndImageInstant(ProgressiveScreen screen)
+        private void SetTextAndImageInstant(InformationContainer screen)
         {
             TextEvent?.Invoke(screen.Text);
 

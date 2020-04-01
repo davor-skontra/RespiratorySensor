@@ -37,8 +37,6 @@ namespace Panels.MeasurementPanel
             _gravityDirectionProvider = gravityDirectionProvider;
 
             _measurementService.ReadyEvent += ReadyEvent;
-
-            StartMeasuring();
             
             _measureOnceEvery = new UpdateContainerBuilder(Measure)
                 .RunFirstInstant()
@@ -53,7 +51,7 @@ namespace Panels.MeasurementPanel
             _measurementService.RecordMeasurement(Gravity.x, Gravity.y, Gravity.z, _stopwatch.ElapsedMilliseconds);
         }
 
-        private void StartMeasuring()
+        public void StartMeasuring()
         {
             _stopwatch.Restart();
             _measurementService.Start();
