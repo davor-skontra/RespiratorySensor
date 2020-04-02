@@ -1,6 +1,6 @@
 using System;
 using Localization;
-using Panels.ProgressiveText.Image;
+using UnityEngine;
 
 namespace Panels.ProgressiveText
 {
@@ -8,28 +8,17 @@ namespace Panels.ProgressiveText
     {
         private int _currentScreen = 0;
 
-        public event Action<InformationContainer> ChangeScreenEvent;
+        public event Action<LocalizedMessage> ChangeScreenEvent;
         public event Action DoneWithProgressiveScreensEvent;
 
         public ProgressiveTextModel(
-            LocalizedTexts localizedTexts,
-            LocalizedAudios localizedAudios,
-            ImageContainer images
+            LocalizedMessageSequence messageSequence
         )
         {
-            Screens = new[]
-            {
-                InformationContainer.From(
-                    localizedTexts.PressButtonToStart
-                ),
-                InformationContainer.From(
-                    localizedTexts.WhenReadyPlaceAndWait,
-                    image: images.Instruction
-                )
-            };
+            Screens = messageSequence.Messages;
         }
 
-        private InformationContainer[] Screens { get; }
+        private LocalizedMessage[] Screens { get; }
 
         public void RequestNextScreen()
         {

@@ -14,8 +14,6 @@ namespace Panels.MeasurementPanel
         private const float FrequencyHz = 30f;
         private const int MillisInSecond = 1000;
         
-        private readonly LocalizedTexts _texts;
-        private readonly LocalizedAudios _audios;
         private readonly IMeasurementService _measurementService;
         private readonly IGravityDirectionProvider _gravityDirectionProvider;
 
@@ -25,14 +23,10 @@ namespace Panels.MeasurementPanel
         public event Action<float> ReadyEvent;
 
         public MeasurementPanelModel(
-            LocalizedTexts texts,
-            LocalizedAudios audios,
             IMeasurementService measurementService,
             IGravityDirectionProvider gravityDirectionProvider
         )
         {
-            _texts = texts;
-            _audios = audios;
             _measurementService = measurementService;
             _gravityDirectionProvider = gravityDirectionProvider;
 

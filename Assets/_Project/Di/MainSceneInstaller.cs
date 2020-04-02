@@ -1,3 +1,4 @@
+using Localization;
 using Measurement;
 using Panels;
 using Panels.MeasurementPanel;
@@ -10,6 +11,7 @@ namespace Di
     public class MainSceneInstaller : MonoInstaller
     {
         [SerializeField] private ProgressiveScreenSettings progressiveSettings;
+        [SerializeField] private LocalizedMessageSequence messageSequence;
         
         public override void InstallBindings()
         {
@@ -38,6 +40,10 @@ namespace Di
             Container
                 .BindInterfacesAndSelfTo<ProgressiveScreenSettings>()
                 .FromInstance(progressiveSettings)
+                .AsSingle();
+
+            Container
+                .BindInstance(messageSequence)
                 .AsSingle();
         }
 

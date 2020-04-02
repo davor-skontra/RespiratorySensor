@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Localization;
 using UnityEngine;
 
 namespace Panels.ProgressiveText
@@ -53,7 +54,7 @@ namespace Panels.ProgressiveText
             }
         }
 
-        private void OnNextScreen(InformationContainer screen)
+        private void OnNextScreen(LocalizedMessage message)
         {
             if (_initialized)
             {
@@ -61,13 +62,13 @@ namespace Panels.ProgressiveText
 
                 _animation = DOTween.Sequence()
                     .Append(AnimateColorTo(Color.clear))
-                    .AppendCallback(() => SetTextAndImageInstant(screen))
+                    .AppendCallback(() => SetTextAndImageInstant(message))
                     .Append(AnimateColorTo(_initialTextColor))
                     .Play();
             }
             else
             {
-                SetTextAndImageInstant(screen);
+                SetTextAndImageInstant(message);
                 _initialTextColor = TextAndImageColor;
                 _initialized = true;
             }
@@ -82,14 +83,14 @@ namespace Panels.ProgressiveText
                     .SetEase(_settings.Ease);
         }
 
-        private void SetTextAndImageInstant(InformationContainer screen)
+        private void SetTextAndImageInstant(LocalizedMessage message)
         {
-            TextEvent?.Invoke(screen.Text);
+            TextEvent?.Invoke(message.Text.Get);
 
-            if (screen.Image != null)
+            if (message.Sprite.Get != null)
             {
                 ImageVisibilityEvent?.Invoke(true);
-                ImageEvent?.Invoke(screen.Image);
+                ImageEvent?.Invoke(message.Sprite.Get);
             }
             else
             {

@@ -1,16 +1,17 @@
 using System;
+using UnityEngine;
 
-namespace UnityEngine
+namespace Localization
 {
     [Serializable]
     public class LocalizedMessage
     {
-        [SerializeField, Multiline] private string text;
-        [SerializeField] private Sprite image;
-        [SerializeField] private AudioClip audio;
+        [SerializeField] private LocalizedMultilineString text;
+        [SerializeField] private LocalizedAudioClip audio;
+        [SerializeField] private LocalizedSprite sprite;
 
-        public string Text => text;
-        public Sprite Image => image;
-        public AudioClip Audio => audio;
+        public LocalizedMultilineString Text => text;
+        public LocalizedSprite Sprite => sprite;
+        public LocalizedAudioClip Audio => audio;
     }
 }

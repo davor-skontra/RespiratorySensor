@@ -1,13 +1,14 @@
 using System;
+using UnityEngine;
 
-namespace UnityEngine
+namespace Localization
 {
     public abstract class LocalizedType<T>
     {
         protected abstract T English { get; }
         protected abstract T Finnish { get; }
 
-        public T Get(SystemLanguage language)
+        public T GetSpecific(SystemLanguage language)
         {
             // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (language)
@@ -18,6 +19,17 @@ namespace UnityEngine
                     return English;
             }
         }
+
+        public T Get => GetSpecific(Application.systemLanguage);
+    }
+    
+    [Serializable]
+    public class LocalizedMultilineString: LocalizedType<string>
+    {
+        [SerializeField, Multiline] private string english;
+        [SerializeField, Multiline] private string finnish;
+        protected override string English => english;
+        protected override string Finnish => finnish;
     }
 
     [Serializable]
@@ -27,5 +39,23 @@ namespace UnityEngine
         [SerializeField] private string finnish;
         protected override string English => english;
         protected override string Finnish => finnish;
+    }
+    
+    [Serializable]
+    public class LocalizedAudioClip: LocalizedType<AudioClip>
+    {
+        [SerializeField] private AudioClip english;
+        [SerializeField] private AudioClip finnish;
+        protected override AudioClip English => english;
+        protected override AudioClip Finnish => finnish;
+    }
+    
+    [Serializable]
+    public class LocalizedSprite: LocalizedType<Sprite>
+    {
+        [SerializeField] private Sprite english;
+        [SerializeField] private Sprite finnish;
+        protected override Sprite English => english;
+        protected override Sprite Finnish => finnish;
     }
 }

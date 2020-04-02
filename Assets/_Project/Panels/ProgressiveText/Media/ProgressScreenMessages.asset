@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed41b39b961d4a7fa3a2b5c97e81fdec, type: 3}
+  m_Name: ProgressScreenMessages
+  m_EditorClassIdentifier: 
+  messages:
+  - text:
+      english: Hi. Press the button bellow and we will instruct you how to begin.
+      finnish: 
+    audio:
+      english: {fileID: 0}
+      finnish: {fileID: 0}
+    sprite:
+      english: {fileID: 0}
+      finnish: {fileID: 0}
+  - text:
+      english: 'The picture bellow shows how the phone should be placed durinfg measurement.
+
+        There
+        is no need to do this yet.
+
+'
+      finnish: 
+    audio:
+      english: {fileID: 0}
+      finnish: {fileID: 0}
+    sprite:
+      english: {fileID: 21300000, guid: ca55035d3298fad42aa610371b6ccc59, type: 3}
+      finnish: {fileID: 0}
